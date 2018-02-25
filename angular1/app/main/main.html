@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div class="header header-index down-header">
+  <div class="top-layout clr">
+
+    <div class="nav_head" id="nav-head">
+      <ul id="index_head_list" class="clr">
+
+        <li id="li_login" class="li li_login fr" style="top: 0px; line-height: 0px;">
+          <div id="loggedBtn" style="">
+            <a id="slogan">{{loginUser.name}}</a><span
+              class="seq">|</span><a class="log-out" ng-click="logout()">退出</a>
+          </div>
+        </li>
+        <li class="li fr cd" ui-sref-active="on">
+          <a ui-sref="main.user" ng-show="loginUser.role == 'admin'">用户管理</a>
+        </li>
+        <li class="li fr cd" ui-sref-active="on"><a ui-sref="main.investment">投资记录</a></li>
+        <li class="li fr cd" ui-sref-active="on"><a ui-sref="main.forecast">预测</a></li>
+        <li class="li fr icon">
+          <a href="javascript:void(0);"
+             style="font-size:25px; line-height: 25px;"
+             click-anywhere-but-here="hideMenu()"
+             ng-click="openNaviBar()">
+            &#9776;
+          </a>
+        </li>
+        </ul>
+    </div>
+
+  </div>
+</div>
+<div class="main-div row">
+  <div class="content-div">
+    <div class="p-content">
+
+      <div class="content" ui-view>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

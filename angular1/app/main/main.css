@@ -1,0 +1,160 @@
+body {
+    background: #f0f0f0 !important;
+    overflow-x: auto !important;
+}
+.p-content{
+    width: 100%;
+    padding: 0;
+}
+
+.left_div{
+    width: 145px;
+    display: table-cell;
+    min-height: 600px;
+    margin: 0;
+    padding: 0;
+}
+.content{
+    margin:0;
+    padding: 10px 20px;
+}
+
+.content_bb_cur{
+    margin:0;
+    width: 995px;
+    display: table-cell;
+    padding: 20px;
+}
+
+.add-rec-div{
+    border-radius: 0px 4px 0px 0px;
+    width: 40px;
+    height: 110px;
+    background-color: #ee5b56;
+    top: 140px;
+    margin-left: 1040px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    position: fixed;
+    border-radius: 0px 4px 4px 0px;
+}
+@media screen and (max-width: 1140px) {
+    .add-rec-div, .import-rec-div {
+        right: 0px;
+        margin-left: 0px;
+    }
+}
+
+.add-rec-ico{
+    margin-top: 12px;
+    margin-left: 8px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-image: url("/img/record/icon_xiugai_pass.png");
+
+}
+.add-rec-text{
+    margin-top: 10px;
+    font-size: 16px;
+    width:30px;
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    line-height: 18px;
+    text-align: center;
+}
+
+.import-rec-div{
+    border-radius: 0px 4px 4px 0px;
+    width: 40px;
+    background-color: #5da3f3;
+    top: 260px;
+    margin-left: 1040px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    position: fixed;
+}
+.import-rec-div a {
+    display: block;
+    font-size: 16px;
+    width:30px;
+    padding: 10px 5px 10px;
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    line-height: 18px;
+    text-align: center;
+}
+.import-rec-text{
+    border-bottom: 1px solid #3c8dea;
+}
+
+
+
+
+.nav_head .icon {
+    display: none;
+}
+
+.nav_head {
+    margin-bottom: 15px;
+}
+
+.header {
+    position: fixed;
+    margin-top: -80px;
+}
+
+.main-div {
+    margin-top: 80px;
+}
+
+@media screen and (max-width: 600px) {
+    .header {
+        width: 100%;
+    }
+    .nav_head {
+        float: none;
+        margin-top: 0;
+        margin-bottom: 15px;
+        padding-top: 15px;
+        padding-right: 15px;
+    }
+    .top-layout{ width: 100%; margin: 0 auto; }
+    .nav_head li:not(:first-child) {display: none;}
+    .nav_head li.icon {
+        float: left;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .nav_head.responsive {
+        position: relative;
+        padding-top: 55px;
+    }
+    .nav_head.responsive .icon {
+        position: absolute;
+        left: 0;
+        top: 15px;
+    }
+    .nav_head.responsive li {
+        float: none;
+        display: block;
+        text-align: left;
+        height: 40px;
+    }
+
+    .nav_head .cd {
+        width: 65px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .hide-in-phone {
+        display: none;
+    }
+}

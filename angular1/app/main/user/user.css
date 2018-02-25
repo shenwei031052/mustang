@@ -1,0 +1,14 @@
+.save-btn {
+    text-align: right;
+    padding-right: 30px;
+}
+
+.user-cell {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.add-user {
+    height: 60px;
+}
