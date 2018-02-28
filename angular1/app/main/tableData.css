@@ -285,3 +285,22 @@ h1, h2, h3, h4, h5, h6, th {
     right: 9px;
     top: 27px;
 }
+
+.save-btn {
+    text-align: right;
+    padding-right: 30px;
+}
+
+.table-cell {
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+select.table-cell {
+    width: 80%;
+}
+
+.table-add {
+    height: 60px;
+}

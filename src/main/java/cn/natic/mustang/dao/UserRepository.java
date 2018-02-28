@@ -1,7 +1,6 @@
 package cn.natic.mustang.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import javax.transaction.Transactional;
 import java.util.List;
 

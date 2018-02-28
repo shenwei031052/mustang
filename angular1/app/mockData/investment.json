@@ -1,0 +1,19 @@
+[{
+  "productName": "车e融",
+  "amount": 10000,
+  "startDate": "3/1",
+  "endDate": "4/1",
+  "interest": 0.11
+},{
+  "productName": "团贷网",
+  "amount": 10000,
+  "startDate": "3/1",
+  "endDate": "4/1",
+  "interest": 0.11
+},{
+  "productName": "和信贷",
+  "amount": 10000,
+  "startDate": "3/1",
+  "endDate": "4/1",
+  "interest": 0.11
+}]

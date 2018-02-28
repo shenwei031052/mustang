@@ -3,9 +3,10 @@ package cn.natic.mustang.dao;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

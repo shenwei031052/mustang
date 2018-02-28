@@ -34,10 +34,12 @@ gulp.task('pack_js', function () {
 );
 
 gulp.task('other', function () {
-    return gulp.src(['./app/**/*.html',
+    return gulp.src([
+      './app/**/*.html',
       '!./app/bower_components/**',
       './app/**/*.jpg',
       './app/**/*.png',
+      './app/**/*.json',
       './app/*.ico'])
       .pipe(gulp.dest('./dist'));
   }

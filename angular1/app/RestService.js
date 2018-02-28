@@ -1,90 +1,86 @@
-'use strict';
+(function () {
 
-angular.module('myApp')
-  .factory('RestService', RestService);
+  'use strict';
 
-RestService.$inject = ['$http', '$q'];
+  angular.module('myApp')
+    .factory('RestService', RestService);
 
-function RestService($http, $q) {
+  RestService.$inject = ['$http', '$q'];
 
-  //var url = 'http://192.168.2.100:8080/';
-  var url = location.protocol + '//' + location.hostname + ':8080/';
+  function RestService($http, $q) {
+
+    //var url = 'http://192.168.2.100:8080/';
+    var url = location.protocol + '//' + location.hostname + ':8080/';
 
 
-  function invokeAction(method, data, config) {
+    function invokeAction(method, data, config) {
 
-    var deferred = $q.defer();
-    $http.post(url + method, JSON.stringify(data), config)
-      .then(function (response) {
-        if (response.status === 200) {
-          if (method === 'login') {
-            deferred.resolve(response.headers);
+      var deferred = $q.defer();
+      $http.post(url + method, JSON.stringify(data), config)
+        .then(function (response) {
+          if (response.status === 200) {
+            if (method === 'login') {
+              deferred.resolve(response.headers);
+            } else {
+              deferred.resolve(response.data);
+            }
           } else {
-            deferred.resolve(response.data);
+            deferred.reject(response.statusText);
           }
-        } else {
-          deferred.reject(response.statusText);
-        }
-      });
+        });
 
-    return deferred.promise;
+      return deferred.promise;
+    }
+
+
+    var svc = {};
+
+    svc.login = function (username, password) {
+      var user = {};
+      user.username = username;
+      user.password = password;
+
+      return invokeAction('login', user)
+    };
+
+    svc.getLoginUser = function () {
+      return invokeAction('getLoginUser');
+    };
+
+    svc.addUser = function (user) {
+      return invokeAction('addUser', user);
+    };
+
+    svc.deleteUser = function (user) {
+      return invokeAction('deleteUser', user);
+    };
+
+    svc.getAllUsers = function () {
+      return invokeAction('getAllUsers');
+    };
+
+    svc.upsertUsers = function (users) {
+      return invokeAction('upsertUsers', users);
+    };
+
+    svc.getAllInvestors = function () {
+      return invokeAction("getAllInvestors");
+    };
+
+    svc.getAllInvestments = function () {
+      return invokeAction("getAllInvestments");
+    };
+
+    svc.upsertInvestments = function (investments) {
+      return invokeAction("upsertInvestments", investments);
+    };
+
+    svc.deleteInvestment = function (investment) {
+      return invokeAction("deleteInvestment", investment);
+    };
+
+    return svc;
+
   }
 
-
-  var svc = {};
-
-  svc.login = function (username, password) {
-    var user = {};
-    user.username = username;
-    user.password = password;
-
-    return invokeAction('login', user)
-  };
-
-  svc.getLoginUser = function () {
-    return invokeAction('getLoginUser');
-  };
-
-  svc.addUser = function (user) {
-    return invokeAction('addUser', user);
-  };
-
-  svc.deleteUser = function (user) {
-    return invokeAction('deleteUser', user);
-  };
-
-  svc.getAllUsers = function () {
-    return invokeAction('getAllUsers');
-  };
-
-  svc.upsertUsers = function (users) {
-    return invokeAction('upsertUsers', users);
-  };
-
-  svc.getAllInvestors = function () {
-    return invokeAction("getAllInvestors");
-  };
-
-  svc.getClientAccount = function () {
-    return invokeAction('getClientAccount');
-  };
-
-  svc.getInvestList = function () {
-    return invokeAction('getInvestList');
-  };
-
-  svc.addInvests = function (invests) {
-    return invokeAction('addInvests', invests[0]);
-  };
-
-  svc.deleteInvest = function (invests) {
-    return invokeAction('deleteInvest', invests);
-  };
-
-  svc.getPaybackDetail = function () {
-    return invokeAction('getPaybackDetail');
-  };
-
-  return svc;
-
-}
+})();

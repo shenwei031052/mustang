@@ -29,7 +29,7 @@ function LoginCtrl($scope, $location, RestService) {
           $location.path("/main/user");
         }
       }, function (err) {
-        alert("用户名或密码错误，请联系管理员！")
+        alert("Username or password incorrect, please contact the administrator!")
       });
   };
 

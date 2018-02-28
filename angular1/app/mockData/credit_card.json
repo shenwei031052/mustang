@@ -1,0 +1,19 @@
+[{
+  "bank": "cmb",
+  "creditLimit": 60000,
+  "statementDate": "2/20",
+  "repaymentDate": "3/8",
+  "balance": 1000
+},{
+  "bank": "cgb",
+  "creditLimit": 80000,
+  "statementDate": "2/25",
+  "repaymentDate": "3/15",
+  "balance": 40000
+},{
+  "bank": "ms",
+  "creditLimit": 50000,
+  "statementDate": "2/20",
+  "repaymentDate": "3/8",
+  "balance": 300
+}]

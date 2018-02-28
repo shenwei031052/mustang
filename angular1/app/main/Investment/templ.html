@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-md-6">
+    <p class="rc-title">Investment</p>
+  </div>
+  <div class="col-md-6 save-btn">
+    <button class="btn btn-primary" ng-click="save()">Save</button>
+  </div>
+</div>
+<div class="table box martop">
+  <table id="data-content">
+    <thead>
+    <tr id="order">
+      <th>Product Name</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Amount</th>
+      <th>Rate(%)</th>
+      <th>
+        <button class="btn btn-primary" ng-class="add ? 'disabled' : 'false'" ng-click="addInvestment()">Add</button>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-show="add" class="table-add">
+      <td>
+        <input type="text" class="form-control table-cell" ng-model="newInvestment.productName">
+      </td>
+      <td>
+        <datepicker date-format="yyyy-MM-dd" class="dpicker">
+          <input type="text" class="form-control table-cell" ng-model="newInvestment.startDate"
+                 required>
+        </datepicker>
+      </td>
+      <td>
+        <datepicker date-format="yyyy-MM-dd" class="dpicker">
+          <input type="text" class="form-control table-cell" ng-model="newInvestment.endDate"
+                 required>
+        </datepicker>
+      </td>
+      <td>
+        <input type="text" class="form-control table-cell" ng-model="newInvestment.amount">
+      </td>
+      <td>
+        <input type="text" class="form-control table-cell" ng-model="newInvestment.rate">
+      </td>
+    </tr>
+    <tr ng-repeat="investment in investments">
+      <td>
+        <input type="text" class="form-control table-cell" ng-model="investment.productName">
+      </td>
+      <td>
+        <md-datepicker ng-model="newInvestment.startDate" md-placeholder="Enter date"></md-datepicker>
+      </td>
+      <td>
+        <datepicker date-format="yyyy-MM-dd" class="dpicker">
+          <input type="text" class="form-control table-cell" ng-model="newInvestment.endDate"
+                 required>
+        </datepicker>
+      </td>
+      <td>
+        <input type="text" class="form-control table-cell" ng-model="investment.amount">
+      </td>
+      <td>
+        <input type="text" class="form-control table-cell" ng-model="investment.rate">
+      </td>
+      <td>
+        <button class="btn btn-primary" ng-click="delete(this.investment)">Del</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -112,6 +112,10 @@ body {
     margin-top: 80px;
 }
 
+.dpicker {
+    line-height: 30px;
+}
+
 @media screen and (max-width: 600px) {
     .header {
         width: 100%;

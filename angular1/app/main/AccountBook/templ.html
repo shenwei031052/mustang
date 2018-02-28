@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-md-6">
+    <p class="rc-title">Account Book</p>
+  </div>
+  <div class="col-md-6 save-btn">
+    <button class="btn btn-primary" ng-click="save()">Save</button>
+  </div>
+</div>
+<div class="table box martop">
+  <table id="data-content">
+    <thead>
+    <tr id="order">
+      <th>Name</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Amount</th>
+      <th>
+        <button class="btn btn-primary" ng-class="add ? 'disabled' : 'false'" ng-click="addUser()">Add</button>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-show="add" class="table-add">
+      <td>
+        <input type="text" class="form-control table-cell" ng-model="newUser.username">
+      </td>
+      <td>
+        <input type="text" class="form-control table-cell" ng-model="newUser.password">
+      </td>
+      <td>
+        <input type="text" class="form-control table-cell" ng-model="newUser.name">
+      </td>
+      <td>
+        <select class="form-control table-cell" ng-model="newUser.role">
+          <option value="admin">管理员</option>
+          <option value="investor">投资者</option>
+        </select>
+      </td>
+    </tr>
+    <tr ng-repeat="user in users">
+      <td>
+        <input type="text" class="form-control table-cell" ng-model="user.username">
+      </td>
+      <td>
+        <input type="text" class="form-control table-cell" ng-model="user.password">
+      </td>
+      <td>
+        <input type="text" class="form-control table-cell" ng-model="user.name">
+      </td>
+      <td>
+        <select id="role" class="form-control table-cell" ng-model="user.role">
+          <option value="admin">管理员</option>
+          <option value="investor">投资者</option>
+        </select>
+      </td>
+      <td>
+        <button class="btn btn-primary" ng-click="delete(this.user)">Del</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
