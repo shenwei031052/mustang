@@ -6,7 +6,8 @@
     'main.user',
     'main.accountBook',
     'main.creditCard',
-    'main.investment'
+    'main.investment',
+    'main.forecast'
   ])
     .config(['$stateProvider', function ($stateProvider) {
       var mainState = {

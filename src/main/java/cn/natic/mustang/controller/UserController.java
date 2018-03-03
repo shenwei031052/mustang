@@ -1,7 +1,7 @@
-package cn.natic.mustang.web;
+package cn.natic.mustang.controller;
 
-import cn.natic.mustang.dao.User;
-import cn.natic.mustang.dao.UserRepository;
+import cn.natic.mustang.entity.User;
+import cn.natic.mustang.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

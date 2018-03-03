@@ -79,6 +79,22 @@
       return invokeAction("deleteInvestment", investment);
     };
 
+    svc.getAllCreditCards = function () {
+      return invokeAction("getAllCreditCards");
+    };
+
+    svc.upsertCreditCards = function (creditCards) {
+      return invokeAction("upsertCreditCards", creditCards);
+    };
+
+    svc.deleteCreditCard = function (creditCard) {
+      return invokeAction("deleteCreditCard", creditCard);
+    };
+
+    svc.getAvailableFunds = function (period) {
+      return invokeAction("getAvailableFunds", period)
+    };
+
     return svc;
 
   }

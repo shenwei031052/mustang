@@ -1,16 +1,16 @@
 (function () {
   'use strict';
 
-  angular.module('main.investment', ['ui.router','ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
+  angular.module('main.investment', ['ui.router'])
 
     .config(['$stateProvider', function ($stateProvider) {
-      var userState = {
+      var investmentState = {
         name: 'main.investment',
         url: '/investment',
         templateUrl: 'main/Investment/templ.html',
         controller: 'InvestmentCtrl'
       };
-      $stateProvider.state(userState);
+      $stateProvider.state(investmentState);
     }])
     .controller('InvestmentCtrl', InvestmentCtrl);
 
@@ -19,6 +19,8 @@
   function InvestmentCtrl($scope, RestService) {
     $scope.investments = [];
     $scope.newInvestment = {};
+
+
 
     RestService.getAllInvestments()
       .then(function (data) {
@@ -38,7 +40,7 @@
       RestService.upsertInvestments($scope.investments)
         .then(function (data) {
           $scope.investments = data;
-          $scope.newInvestment = [];
+          $scope.newInvestment = {};
           $scope.add = false;
         });
 

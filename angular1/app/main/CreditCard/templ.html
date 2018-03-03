@@ -16,7 +16,7 @@
       <th>Repayment Date</th>
       <th>Balance</th>
       <th>
-        <button class="btn btn-primary" ng-class="add ? 'disabled' : 'false'" ng-click="addUser()">Add</button>
+        <button class="btn btn-primary" ng-class="add ? 'disabled' : 'false'" ng-click="addCreditCard()">Add</button>
       </th>
     </tr>
     </thead>
@@ -29,10 +29,16 @@
         <input type="text" class="form-control table-cell" ng-model="newCreditCard.creditLimit">
       </td>
       <td>
-        <input type="text" class="form-control table-cell" ng-model="newCreditCard.statementDate">
+        <datepicker date-format="yyyy-MM-dd" class="dpicker">
+          <input type="text" class="form-control table-cell" ng-model="newCreditCard.statementDate"
+                 required>
+        </datepicker>
       </td>
       <td>
-        <input type="text" class="form-control table-cell" ng-model="newCreditCard.repaymentDate">
+        <datepicker date-format="yyyy-MM-dd" class="dpicker">
+          <input type="text" class="form-control table-cell" ng-model="newCreditCard.repaymentDate"
+                 required>
+        </datepicker>
       </td>
       <td>
         <input type="text" class="form-control table-cell" ng-model="newCreditCard.balance">
@@ -40,21 +46,11 @@
 
     </tr>
     <tr ng-repeat="creditCard in creditCards">
-      <td>
-        <input type="text" class="form-control table-cell" ng-model="creditCard.bank">
-      </td>
-      <td>
-        <input type="text" class="form-control table-cell" ng-model="creditCard.creditLimit">
-      </td>
-      <td>
-        <input type="text" class="form-control table-cell" ng-model="creditCard.statementDate">
-      </td>
-      <td>
-        <input type="text" class="form-control table-cell" ng-model="creditCard.repaymentDate">
-      </td>
-      <td>
-        <input type="text" class="form-control table-cell" ng-model="creditCard.balance">
-      </td>
+      <td>{{creditCard.bank}}</td>
+      <td>{{creditCard.creditLimit}}</td>
+      <td>{{creditCard.statementDate | date: 'yyyy-MM-dd'}}</td>
+      <td>{{creditCard.repaymentDate | date: 'yyyy-MM-dd'}}</td>
+      <td>{{creditCard.balance}}</td>
       <td>
         <button class="btn btn-primary" ng-click="delete(this.creditCard)">Del</button>
       </td>

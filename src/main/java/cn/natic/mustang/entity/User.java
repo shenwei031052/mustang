@@ -1,4 +1,4 @@
-package cn.natic.mustang.dao;
+package cn.natic.mustang.entity;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 

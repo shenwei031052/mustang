@@ -1,4 +1,4 @@
-package cn.natic.mustang.dao;
+package cn.natic.mustang.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

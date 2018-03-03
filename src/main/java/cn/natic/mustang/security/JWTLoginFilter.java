@@ -1,6 +1,6 @@
 package cn.natic.mustang.security;
 
-import cn.natic.mustang.dao.User;
+import cn.natic.mustang.entity.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

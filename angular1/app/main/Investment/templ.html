@@ -45,24 +45,11 @@
       </td>
     </tr>
     <tr ng-repeat="investment in investments">
-      <td>
-        <input type="text" class="form-control table-cell" ng-model="investment.productName">
-      </td>
-      <td>
-        <md-datepicker ng-model="newInvestment.startDate" md-placeholder="Enter date"></md-datepicker>
-      </td>
-      <td>
-        <datepicker date-format="yyyy-MM-dd" class="dpicker">
-          <input type="text" class="form-control table-cell" ng-model="newInvestment.endDate"
-                 required>
-        </datepicker>
-      </td>
-      <td>
-        <input type="text" class="form-control table-cell" ng-model="investment.amount">
-      </td>
-      <td>
-        <input type="text" class="form-control table-cell" ng-model="investment.rate">
-      </td>
+      <td>{{investment.productName}}</td>
+      <td>{{investment.startDate | date: 'yyyy-MM-dd'}}</td>
+      <td>{{investment.endDate | date: 'yyyy-MM-dd'}}</td>
+      <td>{{investment.amount}}</td>
+      <td>{{investment.rate}}</td>
       <td>
         <button class="btn btn-primary" ng-click="delete(this.investment)">Del</button>
       </td>

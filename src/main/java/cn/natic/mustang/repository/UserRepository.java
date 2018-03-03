@@ -1,5 +1,6 @@
-package cn.natic.mustang.dao;
+package cn.natic.mustang.repository;
 
+import cn.natic.mustang.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import javax.transaction.Transactional;
 import java.util.List;

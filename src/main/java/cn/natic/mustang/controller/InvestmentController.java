@@ -1,7 +1,7 @@
-package cn.natic.mustang.web;
+package cn.natic.mustang.controller;
 
-import cn.natic.mustang.dao.Investment;
-import cn.natic.mustang.dao.InvestmentRepository;
+import cn.natic.mustang.entity.Investment;
+import cn.natic.mustang.repository.InvestmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

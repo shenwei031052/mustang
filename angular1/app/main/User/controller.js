@@ -41,7 +41,7 @@
       RestService.upsertUsers($scope.users)
         .then(function (data) {
           $scope.users = data;
-          $scope.newUser = [];
+          $scope.newUser = {};
           $scope.add = false;
         });
 
