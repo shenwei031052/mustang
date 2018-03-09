@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', ['ui.router', 'ngCookies', 'ngTable', 'myApp.login', 'myApp.main'])
+angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngCookies', 'myApp.login', 'myApp.main'])
   .config(['$urlRouterProvider', function ($urlRouterProvider) {
     $urlRouterProvider.when('', '/login');
   }])

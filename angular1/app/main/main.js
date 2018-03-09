@@ -2,7 +2,6 @@
 
   var main = angular.module('myApp.main', [
     'ui.router',
-    '720kb.datepicker',
     'main.user',
     'main.accountBook',
     'main.creditCard',

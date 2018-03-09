@@ -54,7 +54,33 @@
               $scope.investments = data;
             });
         });
-    }
+    };
+
+
+    $scope.dateOptions = {
+      formatYear: 'yyyy',
+      startingDay: 0,
+      showWeeks: false
+    };
+
+    $scope.open1 = function() {
+      $scope.popup1.opened = true;
+    };
+
+    $scope.open2 = function() {
+      $scope.popup2.opened = true;
+    };
+
+    $scope.popup1 = {
+      opened: false
+    };
+
+    $scope.popup2 = {
+      opened: false
+    };
+
+
+
 
 
   }

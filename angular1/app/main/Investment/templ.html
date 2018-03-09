@@ -26,16 +26,21 @@
         <input type="text" class="form-control table-cell" ng-model="newInvestment.productName">
       </td>
       <td>
-        <datepicker date-format="yyyy-MM-dd" class="dpicker">
-          <input type="text" class="form-control table-cell" ng-model="newInvestment.startDate"
-                 required>
-        </datepicker>
+        <p class="input-group">
+          <input type="text" class="form-control table-cell"
+                 uib-datepicker-popup ng-model="newInvestment.startDate"
+                 is-open="popup1.opened" datepicker-options="dateOptions"
+                 ng-required="true" close-text="Close"
+                 ng-click="open1()"/>
+        </p>
       </td>
       <td>
-        <datepicker date-format="yyyy-MM-dd" class="dpicker">
-          <input type="text" class="form-control table-cell" ng-model="newInvestment.endDate"
-                 required>
-        </datepicker>
+        <p class="input-group">
+          <input type="text" class="form-control table-cell"
+                 uib-datepicker-popup ng-model="newInvestment.endDate"
+                 is-open="popup2.opened" datepicker-options="dateOptions"
+                 ng-required="true" close-text="Close" ng-click="open2()"/>
+        </p>
       </td>
       <td>
         <input type="text" class="form-control table-cell" ng-model="newInvestment.amount">
