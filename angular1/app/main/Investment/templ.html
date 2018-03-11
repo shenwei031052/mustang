@@ -1,64 +1,93 @@
-<div class="row">
-  <div class="col-md-6">
-    <p class="rc-title">Investment</p>
+<!-- modal -->
+<script type="text/ng-template" id="myModalContent.html">
+  <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">{{modalTitle}}</h3>
   </div>
-  <div class="col-md-6 save-btn">
-    <button class="btn btn-primary" ng-click="save()">Save</button>
-  </div>
-</div>
-<div class="table box martop">
-  <table id="data-content">
-    <thead>
-    <tr id="order">
-      <th>Product Name</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-      <th>Amount</th>
-      <th>Rate(%)</th>
-      <th>
-        <button class="btn btn-primary" ng-class="add ? 'disabled' : 'false'" ng-click="addInvestment()">Add</button>
-      </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-show="add" class="table-add">
-      <td>
-        <input type="text" class="form-control table-cell" ng-model="newInvestment.productName">
-      </td>
-      <td>
+  <div class="modal-body" id="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" class="form-control" id="productName"
+               ng-model="investment.productName">
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="text" class="form-control" id="amount"
+               ng-model="investment.amount">
+      </div>
+      <div class="form-group">
+        <label for="startDate">Start Date</label>
         <p class="input-group">
-          <input type="text" class="form-control table-cell"
-                 uib-datepicker-popup ng-model="newInvestment.startDate"
-                 is-open="popup1.opened" datepicker-options="dateOptions"
+          <input type="text" class="form-control" id="startDate"
+                 uib-datepicker-popup ng-model="investment.startDate"
+                 is-open="popupStartDate.opened" datepicker-options="dateOptions"
                  ng-required="true" close-text="Close"
-                 ng-click="open1()"/>
+                 ng-click="openStartDate()"/>
         </p>
-      </td>
-      <td>
+      </div>
+      <div class="form-group">
+        <label for="endDate">End Date</label>
         <p class="input-group">
-          <input type="text" class="form-control table-cell"
-                 uib-datepicker-popup ng-model="newInvestment.endDate"
-                 is-open="popup2.opened" datepicker-options="dateOptions"
-                 ng-required="true" close-text="Close" ng-click="open2()"/>
+          <input type="text" class="form-control" id="endDate"
+                 uib-datepicker-popup ng-model="investment.endDate"
+                 is-open="popupEndDate.opened" datepicker-options="dateOptions"
+                 ng-required="true" close-text="Close" ng-click="openEndDate()"/>
         </p>
-      </td>
-      <td>
-        <input type="text" class="form-control table-cell" ng-model="newInvestment.amount">
-      </td>
-      <td>
-        <input type="text" class="form-control table-cell" ng-model="newInvestment.rate">
-      </td>
-    </tr>
-    <tr ng-repeat="investment in investments">
-      <td>{{investment.productName}}</td>
-      <td>{{investment.startDate | date: 'yyyy-MM-dd'}}</td>
-      <td>{{investment.endDate | date: 'yyyy-MM-dd'}}</td>
-      <td>{{investment.amount}}</td>
-      <td>{{investment.rate}}</td>
-      <td>
-        <button class="btn btn-primary" ng-click="delete(this.investment)">Del</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+      </div>
+      <div class="form-group">
+        <label for="rate">Rate(%)</label>
+        <input type="text" class="form-control" id="rate"
+               ng-model="investment.rate">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-danger" type="button" ng-click="delete()" ng-class="investment.id ? 'false' : 'disabled'">Delete</button>
+    <button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</script>
+
+
+<div id="investment">
+  <div class="row">
+    <div class="col-md-6">
+      <p class="rc-title">Investment</p>
+    </div>
+  </div>
+  <div class="table box martop">
+    <table id="data-content">
+      <thead>
+      <tr id="order">
+        <th>Product Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Amount</th>
+        <th>Rate(%)</th>
+        <th>
+          <button class="btn btn-primary" ng-click="new()">NEW</button>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <!--<p class="input-group">
+        <input type="text" class="form-control table-cell"
+               uib-datepicker-popup ng-model="newInvestment.startDate"
+               is-open="popup1.opened" datepicker-options="dateOptions"
+               ng-required="true" close-text="Close"
+               ng-click="open1()"/>
+      </p>-->
+      <tr ng-repeat="investment in investments">
+        <td>{{investment.productName}}</td>
+        <td>{{investment.startDate | date: 'yyyy-MM-dd'}}</td>
+        <td>{{investment.endDate | date: 'yyyy-MM-dd'}}</td>
+        <td>{{investment.amount}}</td>
+        <td>{{investment.rate}}</td>
+        <td>
+          <button class="btn btn-primary" ng-click="edit(this.investment)">EDIT</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

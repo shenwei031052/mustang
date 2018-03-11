@@ -23,7 +23,6 @@ gulp.task('pack_css', function () {
 
 gulp.task('pack_js', function () {
     return gulp.src([
-      //'./app/bower_components/angularjs-datepicker/dist/angular-datepicker.js',
       './app/app.js',
       './app/**/*.js',
       '!./app/bower_components/**'

@@ -14,74 +14,131 @@
     }])
     .controller('InvestmentCtrl', InvestmentCtrl);
 
-  InvestmentCtrl.$inject = ['$scope', 'RestService'];
+  InvestmentCtrl.$inject = ['$scope', 'RestService', "$uibModal", "$document"];
 
-  function InvestmentCtrl($scope, RestService) {
+  function InvestmentCtrl($scope, RestService, $uibModal, $document) {
     $scope.investments = [];
-    $scope.newInvestment = {};
 
-
-
-    RestService.getAllInvestments()
-      .then(function (data) {
-        $scope.investments = data;
-      });
-
-
-    $scope.addInvestment = function () {
-      $scope.add = true;
-    };
-
-    $scope.save = function () {
-
-      if ($scope.add) {
-        $scope.investments.push($scope.newInvestment);
-      }
-      RestService.upsertInvestments($scope.investments)
+    $scope.init = function () {
+      RestService.getAllInvestments()
         .then(function (data) {
           $scope.investments = data;
-          $scope.newInvestment = {};
-          $scope.add = false;
         });
-
     };
+    $scope.init();
+
 
     $scope.delete = function (investment) {
       RestService.deleteInvestment(investment)
-        .then(function (data) {
-          RestService.getAllInvestments()
-            .then(function (data) {
-              $scope.investments = data;
-            });
+        .then(function () {
+          $scope.init();
+        });
+    };
+
+    $scope.upsert = function (investment) {
+      var investments = [];
+      investments.push(investment);
+      RestService.upsertInvestments(investments)
+        .then(function () {
+          $scope.init();
         });
     };
 
 
-    $scope.dateOptions = {
-      formatYear: 'yyyy',
-      startingDay: 0,
-      showWeeks: false
+    //modal
+
+    $scope.modalTitle = '';
+
+    $scope.new = function () {
+      $scope.modalTitle = 'New Investment';
+      $scope.open();
+    };
+    $scope.edit = function (investment) {
+      $scope.modalTitle = 'Edit Investment';
+      $scope.open(investment);
     };
 
-    $scope.open1 = function() {
-      $scope.popup1.opened = true;
+    $scope.open = function (investment) {
+      var parentElem = angular.element($document[0].querySelector('#investment'));
+      var modalInstance = $uibModal.open({
+        animation: true,
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'myModalContent.html',
+        controller: 'ModalInstanceCtrl',
+        controllerAs: '$scope',
+        appendTo: parentElem,
+        resolve: {
+          modalTitle: function () {
+            return $scope.modalTitle;
+          },
+          invest: function () {
+            return investment;
+          }
+        }
+      });
+
+      modalInstance.result.then(
+        function (investment) {
+          if (investment.delete) {
+            $scope.delete(investment);
+          } else {
+            $scope.upsert(investment);
+          }
+        }, function () {
+          //dismiss function
+        }
+      );
     };
-
-    $scope.open2 = function() {
-      $scope.popup2.opened = true;
-    };
-
-    $scope.popup1 = {
-      opened: false
-    };
-
-    $scope.popup2 = {
-      opened: false
-    };
-
-
-
 
 
   }
+
+
+  angular.module('main.investment')
+    .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, modalTitle, invest) {
+
+      //datepicker start
+      $scope.dateOptions = {
+        formatYear: 'yyyy',
+        startingDay: 0,
+        showWeeks: false
+      };
+
+      $scope.openStartDate = function () {
+        $scope.popupStartDate.opened = true;
+      };
+
+      $scope.openEndDate = function () {
+        $scope.popupEndDate.opened = true;
+      };
+
+      $scope.popupStartDate = {
+        opened: false
+      };
+
+      $scope.popupEndDate = {
+        opened: false
+      };
+      //datepicker end
+
+      $scope.modalTitle = modalTitle;
+      $scope.investment = invest ? invest: {};
+
+      $scope.delete = function () {
+        $scope.investment.delete = true;
+        $uibModalInstance.close($scope.investment);
+      };
+
+      $scope.save = function () {
+        $uibModalInstance.close($scope.investment);
+      };
+
+      $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+      };
+    });
+
 })();
+
+

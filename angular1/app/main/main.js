@@ -1,7 +1,6 @@
 (function () {
 
   var main = angular.module('myApp.main', [
-    'ui.router',
     'main.user',
     'main.accountBook',
     'main.creditCard',
