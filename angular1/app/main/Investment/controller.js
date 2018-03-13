@@ -17,16 +17,17 @@
   InvestmentCtrl.$inject = ['$scope', 'RestService', "$uibModal", "$document"];
 
   function InvestmentCtrl($scope, RestService, $uibModal, $document) {
+
     $scope.investments = [];
 
     $scope.init = function () {
       RestService.getAllInvestments()
         .then(function (data) {
           $scope.investments = data;
+          $scope.$broadcast('investments');
         });
     };
     $scope.init();
-
 
     $scope.delete = function (investment) {
       RestService.deleteInvestment(investment)
@@ -42,6 +43,11 @@
         .then(function () {
           $scope.init();
         });
+    };
+
+    $scope.sortBy = function (propertyName) {
+      $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+      $scope.propertyName = propertyName;
     };
 
 
@@ -123,7 +129,9 @@
       //datepicker end
 
       $scope.modalTitle = modalTitle;
-      $scope.investment = invest ? invest: {};
+      $scope.investment = invest ? invest : {};
+      $scope.platforms = ['Alipay', 'Eloan', 'cheyr', 'Tuandai', 'Hexindai', 'Lianbi'];
+      $scope.types = ['Current', 'Deposit'];
 
       $scope.delete = function () {
         $scope.investment.delete = true;

@@ -16,6 +16,12 @@ public class Investment implements Serializable {
     private String productName;
 
     @Column(nullable = false)
+    private String platform;
+
+    @Column(nullable = false)
+    private String type;
+
+    @Column(nullable = false)
     private Date startDate;
 
     @Column(nullable = false)
@@ -42,6 +48,22 @@ public class Investment implements Serializable {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Date getStartDate() {

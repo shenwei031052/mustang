@@ -15,7 +15,7 @@ public class CreditCard implements Serializable {
     @Column(nullable = false)
     private String bank;
 
-    @Column(precision = 18, scale = 0)
+    @Column(precision = 16, scale = 2)
     private BigDecimal creditLimit;
 
     @Column(nullable = false)
@@ -24,7 +24,7 @@ public class CreditCard implements Serializable {
     @Column(nullable = false)
     private Date repaymentDate;
 
-    @Column(precision = 18, scale = 0)
+    @Column(precision = 16, scale = 2)
     private BigDecimal balance;
 
 
